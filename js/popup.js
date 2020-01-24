@@ -15,8 +15,10 @@ Wbpd.prototype={
         $('input').prop('spellcheck', false);
         $("#optionPage").click(function() {
             event.preventDefault();
+            chrome.windows.getCurrent(null, function( window) {
+                chrome.windows.remove(window.id, function callback(){});
+            });
             chrome.tabs.create({url:Wbpd.prototype.options_url});
-            window.close();
         });
         //批量模式按钮
         // 批量模式,0关闭,1开启
